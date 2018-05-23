@@ -11,13 +11,14 @@ import org.apache.log4j.Logger;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.bizleap.commons.domain.enums.ObjectFullnessLevel;
 import com.bizleap.commons.domain.exception.ServiceUnavailableException;
 import com.bizleap.training.ds.service.CompanyService;
 
 public class CompanyServiceImplTest extends ServiceTest {
 	static Logger logger = Logger.getLogger(CompanyServiceImplTest.class);
 
- //   @Ignore
+   @Ignore
 	@Test
 	public void testFindByCompanyBoId() throws IOException, ServiceUnavailableException {
 
@@ -25,8 +26,27 @@ public class CompanyServiceImplTest extends ServiceTest {
 		logger.info("Company List" + companyService.findByCompanyBoId("COMP01"));
 		assertTrue(CollectionUtils.isNotEmpty(companyService.findByCompanyBoId("COMP01")));
 	}
+	
+	  @Ignore
+	@Test
+	public void testFindByCompanyBoIdSummary() throws IOException, ServiceUnavailableException {
 
-	// @Ignore
+		assertNotNull(companyService.findByCompanyBoId("COMP01",ObjectFullnessLevel.FULL));
+		logger.info("Full" + companyService.findByCompanyBoId("COMP01",ObjectFullnessLevel.FULL ));
+		assertTrue(CollectionUtils.isNotEmpty(companyService.findByCompanyBoId("COMP01",ObjectFullnessLevel.FULL)));
+		
+		assertNotNull(companyService.findByCompanyBoId("COMP01",ObjectFullnessLevel.SUMMARY));
+		logger.info("Summary" + companyService.findByCompanyBoId("COMP01",ObjectFullnessLevel.SUMMARY ));
+		assertTrue(CollectionUtils.isNotEmpty(companyService.findByCompanyBoId("COMP01",ObjectFullnessLevel.SUMMARY)));
+		
+		assertNotNull(companyService.findByCompanyBoId("COMP01",ObjectFullnessLevel.DETAILED));
+		logger.info("Detailed" + companyService.findByCompanyBoId("COMP01",ObjectFullnessLevel.DETAILED ));
+		assertTrue(CollectionUtils.isNotEmpty(companyService.findByCompanyBoId("COMP01",ObjectFullnessLevel.DETAILED)));
+	}
+	
+	
+
+	@Ignore
 	@Test
 	public void testGetAllCompany() throws IOException, ServiceUnavailableException {
 

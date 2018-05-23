@@ -23,7 +23,7 @@ public class DataManagerImplTest extends ServiceTest{
 	
 	static Logger logger=Logger.getLogger(DataManagerImplTest.class);
 	
-	@Ignore
+	//@Ignore
 	
 	@Test
 	public void testLoad() throws IOException, ServiceUnavailableException {
